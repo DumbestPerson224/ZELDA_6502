@@ -13,3 +13,9 @@ _getHealth:
   mov ax, word ptr [bp - 4]
   mov [0xF002], ax
   pop bp 
+
+_getInventory:
+  push bp
+  mov bp, sp
+  mov ax, word ptr [bp - 4]
+  mov ax, [0xF003], ax
