@@ -27,7 +27,7 @@ _start:
 
   ; Score
   lda #00 ; Score
-  sta $0006s
+  sta $0006
 
  ; Inventory
  lda inventory
