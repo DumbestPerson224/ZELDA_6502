@@ -73,8 +73,8 @@ _collided:
      bne .end
      .collidedY: 
         lda $0004
-         sta #00
-         jmp .end
+        sta #00
+        jmp .end
      .end:
        rts
 
