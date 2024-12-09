@@ -3,6 +3,8 @@
  link_x: .byte $0F ; Link X 
  link_y: .byte $0F ; Link Y
  link_strength: .byte $0F ; How strong Link is
+ inventory: .byte $0F
+
 _start:
 
   ; Load link into memory
@@ -26,6 +28,10 @@ _start:
   ; Score
   lda #00 ; Score
   sta $0005
+
+ ; Inventory
+ lda inventory
+ sta $0006
 
 _getHealthPowerUp:
   ; Get the power up
@@ -88,3 +94,21 @@ _getScorePowerUp:
     jmp .end
  .end:
    rts
+
+_regenerateHealth:
+  ldx $0000
+  cpx #10
+  bne .reset
+  rts
+  .reset:
+    stx #10 ; Reset Link's health
+
+_addItem: 
+
+  ; Get the inventory system value and increment it
+  ldx $0006
+  inx 
+
+  ; Get the object and store it into the inventory
+  ldx $0005
+  stx $0006
