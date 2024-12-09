@@ -33,6 +33,10 @@ _start:
  lda inventory
  sta $0007
 
+ ; Link invincible?
+ lda #0
+ sta $0008
+
 _getHealthPowerUp:
   ; Get the power up
   ldx $0000
@@ -141,3 +145,13 @@ _decrementHealth:
      dex 
   .return: 
      rts
+
+_makeLinkInvincible:
+   ldx $0000
+   cpx #0
+   bcs .decrement
+   beq .increment
+   .decrement:
+     dex
+   .increment:
+      inx
