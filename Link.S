@@ -15,23 +15,50 @@ _start:
   ldy link_strength
   sty $0003
 
+  ; Can increment x and y?
+  lda #01 ; Yes
+  sta $0004
+
 _getHealthPowerUp:
   ; Get the power up
   ldx $0000
   ; Check if the health is not 10
   cpx #10
   bne .increment
+  be .done
   .increment:
   inx       ; Increment X
   stx $0000 ; Store the new result
-  rts 
+  .done:
+     rts 
 
 _getStrengthPowerUp:
  ; Get the power up
  ldx $0003
- cmp x, #1
+ cpx #1
  beq .increment
+ bne .done
  .increment:
    inx       ; Increment X
    stx $0003 ; Store the new result
-   rts ; Return
+  .done:
+    rts ; Return
+
+_collided:
+   ; Load the parameters
+   ldx  $0001
+   cpx #$0700
+
+   ; Check if we collided by X
+   beq .collided
+   bne .checkY
+   .collided:
+      lda $0004
+      sta #00
+   .checkY:
+     ldx $0002
+     cpx #$0701
+     beq .collidedY
+     .collidedY: 
+        lda $0004
+         sta #00
