@@ -129,3 +129,16 @@ _removeItem:
       dex
    .done:
      rts
+
+_decrementHealth:
+
+  ; Get the health from memory
+  ldx $0000
+  cpx #0
+  bcs .decrement
+  beq .return
+  .decrement:
+     dex 
+  .return: 
+     rts
+     rts
