@@ -107,8 +107,13 @@ _addItem:
 
   ; Get the inventory system value and increment it
   ldx $0006
+  cpx #$0F
+  bne .increment
+  be .done
+  .increment:
   inx 
 
+  .done:
   ; Get the object and store it into the inventory
   ldx $0005
   stx $0006
