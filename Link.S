@@ -109,7 +109,7 @@ _addItem:
   ldx $0006
   cpx #$0F
   bne .increment
-  be .done
+  beq .done
   .increment:
   inx 
 
