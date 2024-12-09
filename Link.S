@@ -17,7 +17,11 @@ _start:
 
   ; Can increment x and y?
   lda #01 ; Yes
-  sta $0004
+  sta $0004 
+
+  ; Game over
+  lda #00 ; No
+  sta $0005
 
 _getHealthPowerUp:
   ; Get the power up
