@@ -23,6 +23,10 @@ _start:
   lda #00 ; No
   sta $0005
 
+  ; Score
+  lda #00 ; Score
+  sta $0005
+
 _getHealthPowerUp:
   ; Get the power up
   ldx $0000
@@ -73,3 +77,14 @@ _collided:
          jmp .end
      .end:
        rts
+
+_getScorePowerUp:
+  ldx $0005
+  cpx #10
+  bne .increment 
+  beq .end
+  .increment:
+    inx 
+    jmp .end
+ .end:
+   rts
