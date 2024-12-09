@@ -141,4 +141,3 @@ _decrementHealth:
      dex 
   .return: 
      rts
-     rts
