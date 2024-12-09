@@ -8,13 +8,13 @@
 _start:
 
   ; Load link into memory
-  ldy link_health
+  ldy (link_health)
   sty $0000
-  ldy link_x
+  ldy (link_x)
   sty $0001
-  ldy link_y
+  ldy (link_y)
   sty $0002
-  ldy link_strength
+  ldy (link_strength)
   sty $0003
 
   ; Can increment x and y?
