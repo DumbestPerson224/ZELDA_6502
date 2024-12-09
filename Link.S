@@ -27,11 +27,11 @@ _start:
 
   ; Score
   lda #00 ; Score
-  sta $0005
+  sta $0006s
 
  ; Inventory
  lda inventory
- sta $0006
+ sta $0007
 
 _getHealthPowerUp:
   ; Get the power up
