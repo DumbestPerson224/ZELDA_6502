@@ -13,3 +13,19 @@ _multiply:
           lda (x)   ; Get the new value
           sta $0000 ; Store the new value at $0000
           rts
+          
+_divide:
+     lda $0000 
+     ldx $0001 
+     ldy $0002 
+     cpy #0
+     beq .done 
+     clc 
+     sbc (x)
+     dey 
+     jsr _divide 
+     .done:
+          ; Store new value
+          lda (x)   ; Get the new value
+          sta $0000 ; Store the new value at $0000
+          rts  
