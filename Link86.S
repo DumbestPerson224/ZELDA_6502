@@ -24,7 +24,7 @@ _incrementHealth:
 
 _decrementHealth:
   pop ecx 
-  cmp ecx, 10
+  cmp ecx, 0
   jg .decrement 
   .decrement:
     dec ecx 
