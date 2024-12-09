@@ -117,3 +117,15 @@ _addItem:
   ; Get the object and store it into the inventory
   ldx $0005
   stx $0006
+
+_removeItem:
+
+   ; Get the inventory system value and decrement it
+   ldx $0006
+   cpx #0
+   bcs .decrement
+   beq .done
+   .decrement:
+      dex
+   .done:
+     rts
