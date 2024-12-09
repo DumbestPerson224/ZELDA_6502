@@ -127,7 +127,7 @@ _removeItem:
    ; Get the inventory system value and decrement it
    ldx $0006
    cpx #0
-   bcs .decrement
+   bcc .decrement
    beq .done
    .decrement:
       dex
