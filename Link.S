@@ -48,6 +48,7 @@ _collided:
    ; Load the parameters
    ldx  $0001
    cpx #$0700
+   rts 
 
    ; Check if we collided by X
    beq .collided
@@ -55,10 +56,16 @@ _collided:
    .collided:
       lda $0004
       sta #00
+      rts
+
    .checkY:
      ldx $0002
      cpx #$0701
      beq .collidedY
+     bne .end
      .collidedY: 
         lda $0004
          sta #00
+         jmp .end
+     .end:
+       rts
