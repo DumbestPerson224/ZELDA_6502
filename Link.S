@@ -116,5 +116,5 @@ _inventorySystem:
   sta inventory_system
 
   .done:
-    rts 
-    ldc 
+    rts
+
