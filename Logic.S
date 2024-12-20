@@ -105,7 +105,7 @@ _incrementPlayerX:
    ;if(player[4] < 0b1111111111111111){
    ;  player[4]++;
    ;}
-   cmp word [player + 1 * 4], 0b1111111111111111
+   cmp word [player + 2 * 4], 0b1111111111111111
    jb .increment
    .increment:
-      inc word [player + 1 * 4]
+      inc word [player + 2 * 4]
