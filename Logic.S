@@ -6,7 +6,13 @@ section .data
    enemy:
      db "0"  ; score
      db "10" ; lives
-     
+
+; player + 1 * 1 = player score
+; player + 1 * 2 = player lives
+; player + 2 * 3 = player velocity 
+; enemy  + 1 * 1 = enemy score
+; enemy  + 1 * 2 = enemy lives
+
 section .text
    global _incrementPlayerLives
    global _incrementEnemyLives
