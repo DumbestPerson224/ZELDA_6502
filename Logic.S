@@ -30,54 +30,81 @@ section .text
    global _incrementPlayerX
 
 _incrementPlayerLives:
+   ;if(player[2] < 10){
+   ;   player[2]++;
+   ;}
    cmp byte [player + 1 * 2], 0b1010
    jb .increment
    .increment:
      inc byte [player + 1 * 2]
 
 _incrementEnemyLives:
+   ;if(player[2] < 10){
+   ;   player[2]++;
+   ;}
    cmp byte [enemy + 1 * 2], 0b1010
    jb .increment
    .increment:
      inc byte [enemy + 1 * 2]
 
 _decrementPlayerLives:
+   ;if(player[2] > 0){
+   ;  player[2]++;
+   ;}
    cmp byte [player + 1 * 2], 0b0
    jg .decrement
    .decrement:
      dec byte [player + 1 * 2]
 
 _incrementPlayerScore:
+    ;if(player[1] < 10){
+    ; player[1]++;
+    ;}
     cmp byte [player + 1 * 1], 0b1010
     jb .increment
     .increment:
       inc byte [player + 1 * 2]
 
 _incrementPlayerVelocity:
+   ;if(player[3] < 0b1111111111111111){
+   ; player[3]++;
+   ;}
    cmp word [player + 2 * 3], 0b1111111111111111
    jb .increment
    .increment:
       inc word [player + 2 * 3]
 
 _decrementPlayerVelocity:
+  ;if(player[3] > 0){
+  ; player[3]--;
+  ;}
   cmp word [player + 2 * 3], 0 
   jg .decrement
   .decrement:
      dec word [player + 2 * 3]
 
 _decrementEnemyLives:
-    cmp byte [player + 1 * 2], 0b0
+    ;if(enemy[2] > 0){
+    ;  enemy[2]--;
+    ;}
+    cmp byte [enemy + 1 * 2], 0b0
     jg .decrement
     .decrement:
        dec byte [enemy + 1 * 2]
 
 _decrementPlayerScore:
+    ;if(player[1] > 0){
+    ; player[1]--;
+    ;}
     cmp byte [player + 1 * 1], 0b0
     jg .decrement
     .decrement:
       dec byte [player + 1 * 1]
 
 _incrementPlayerX:
+   ;if(player[4] < 0b1111111111111111){
+   ;  player[4]++;
+   ;}
    cmp word [player + 1 * 4], 0b1111111111111111
    jb .increment
    .increment:
