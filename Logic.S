@@ -2,7 +2,7 @@ section .data
    player:
      db "0"  ; score
      db "0"  ; lives
-     velocity: dd 0
+     velocity: dw 0
    enemy:
      db "0"  ; score
      db "10" ; lives
