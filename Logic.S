@@ -30,7 +30,7 @@ section .text
    global _incrementPlayerX
 
 _incrementPlayerLives:
-   cmp byte [player + 1 * 2], 10
+   cmp byte [player + 1 * 2], 0b1010
    jb .increment
    .increment:
      inc byte [player + 1 * 2]
@@ -42,7 +42,7 @@ _incrementEnemyLives:
      inc byte [enemy + 1 * 2]
 
 _decrementPlayerLives:
-   cmp byte [player + 1 * 2], 0
+   cmp byte [player + 1 * 2], 0b0
    jg .decrement
    .decrement:
      dec byte [player + 1 * 2]
@@ -54,10 +54,16 @@ _incrementPlayerScore:
       inc byte [player + 1 * 2]
 
 _incrementPlayerVelocity:
-   inc word [player + 2 * 3]
+   cmp word [player + 2 * 3], 0b1111111111111111
+   jb .increment
+   .increment:
+      inc word [player + 2 * 3]
 
 _decrementPlayerVelocity:
-  dec word [player + 2 * 3]
+  cmp word [player + 2 * 3], 0 
+  jg .decrement
+  .decrement:
+     dec word [player + 2 * 3]
 
 _decrementEnemyLives:
     cmp byte [player + 1 * 2], 0b0
