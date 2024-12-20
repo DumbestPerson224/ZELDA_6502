@@ -3,6 +3,9 @@ section .data
      db "0"  ; score
      db "0"  ; lives
      dw 0    ; velocity
+     dw 0    ; X axis
+     dw 0    ; Y axis
+
    enemy:
      db "0"  ; score
      db "10" ; lives
@@ -10,6 +13,9 @@ section .data
 ; player + 1 * 1 = player score
 ; player + 1 * 2 = player lives
 ; player + 2 * 3 = player velocity 
+; player + 2 * 4 = player x axis
+; player + 2 * 5 = player y axis 
+
 ; enemy  + 1 * 1 = enemy score
 ; enemy  + 1 * 2 = enemy lives
 
@@ -21,6 +27,7 @@ section .text
    global _incrementPlayerVelocity
    global _decrementPlayerVelocity
    global _decrementPlayerScore
+   global _incrementPlayerX
 
 _incrementPlayerLives:
    cmp byte [player + 1 * 2], 10
@@ -63,3 +70,9 @@ _decrementPlayerScore:
     jg .decrement
     .decrement:
       dec byte [player + 1 * 1]
+
+_incrementPlayerX:
+   cmp byte [player + 1 * 4], 0b1111
+   jb .increment
+   .increment:
+      inc byte [player + 1 * 4]
