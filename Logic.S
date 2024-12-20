@@ -14,7 +14,8 @@ section .text
    global _incrementPlayerScore   
    global _incrementPlayerVelocity
    global _decrementPlayerVelocity
-   
+   global _decrementPlayerScore
+
 _incrementPlayerLives:
    cmp byte [player + 1 * 2], 10
    jb .increment
@@ -49,4 +50,10 @@ _decrementEnemyLives:
     cmp byte [player + 1 * 2], 0
     jg .decrement
     .decrement:
-       dec byte [player + 1 * 2]
+       dec byte [enemy + 1 * 2]
+
+_decrementPlayerScore:
+    cmp byte [player + 1 * 1], 0
+    jg .decrement
+    .decrement:
+      dec byte [player + 1 * 1]
