@@ -36,7 +36,7 @@ _incrementPlayerLives:
      inc byte [player + 1 * 2]
 
 _incrementEnemyLives:
-   cmp byte [enemy + 1 * 2], 10
+   cmp byte [enemy + 1 * 2], 0b1010
    jb .increment
    .increment:
      inc byte [enemy + 1 * 2]
@@ -48,7 +48,7 @@ _decrementPlayerLives:
      dec byte [player + 1 * 2]
 
 _incrementPlayerScore:
-    cmp byte [player + 1 * 1], 10
+    cmp byte [player + 1 * 1], 0b1010
     jb .increment
     .increment:
       inc byte [player + 1 * 2]
@@ -60,19 +60,19 @@ _decrementPlayerVelocity:
   dec word [player + 2 * 3]
 
 _decrementEnemyLives:
-    cmp byte [player + 1 * 2], 0
+    cmp byte [player + 1 * 2], 0b0
     jg .decrement
     .decrement:
        dec byte [enemy + 1 * 2]
 
 _decrementPlayerScore:
-    cmp byte [player + 1 * 1], 0
+    cmp byte [player + 1 * 1], 0b0
     jg .decrement
     .decrement:
       dec byte [player + 1 * 1]
 
 _incrementPlayerX:
-   cmp byte [player + 1 * 4], 0b1111
+   cmp word [player + 1 * 4], 0b1111111111111111
    jb .increment
    .increment:
-      inc byte [player + 1 * 4]
+      inc word [player + 1 * 4]
